@@ -1,0 +1,74 @@
+.TodoFormContainer {
+  padding: 30px 30px 50px;
+  border-radius: 2px;
+  background-color: #F9FBFC;
+}
+
+.TodoForm {
+  width: 320px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.TodoFormTitle {
+  margin: 0;
+  text-align: center;
+  font-size: 21px;
+  margin-bottom: 20px;
+}
+
+.createTaskInput {
+  outline: none;
+  display: flex;
+  border-radius: 2px;
+  width: 90%;
+  max-width: 400px;
+  padding: 15px;
+  font-family: 'Roboto Mono', sans-serif;
+  background: #F9FBFC;
+  font-weight: 400;
+  color: #1E1E1F;
+  border: 2px solid #202329;
+  font-size: 14px;
+}
+
+.createTaskInput::placeholder {
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: 'Roboto Mono', sans-serif;
+}
+
+.createTaskInput:focus {
+  background-color: #ebebeb;
+}
+
+.createTaskInput {
+  grid-column: 1 / -1;
+}
+
+.btn {
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.35em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cancelTaskButton {
+  background-color: #fee6e3;
+}
+
+.createTaskButton:hover {
+  background-color: #ebebeb;
+}

@@ -1,0 +1,44 @@
+.todoNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  margin-top: 20px;
+  border-radius: 2px;
+  border-bottom: 1px solid lightgray;
+}
+
+.todoNav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  gap: 25px;
+  margin-left: 10px;
+}
+
+.todoNav-list__item {
+  cursor: pointer;
+  color: rgb(101, 101, 101);
+}
+
+.todoNav-list__item:hover {
+  color: #000;
+}
+
+.todoNameSpan {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+  letter-spacing: 2px;
+}
+
+.active {
+  font-weight: bold;
+  color: #000;
+}

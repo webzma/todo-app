@@ -1,0 +1,42 @@
+.TodoItem {
+  background-color: #fafafa;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  border-radius: 2px;
+  box-shadow: 0 5px 25px rgba(73, 76, 83, 0.15);
+}
+
+.TodoItem-p {
+  margin: 24px 0 24px 24px;
+  width: calc(100% - 120px);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400
+}
+
+.TodoItem-p--complete {
+  text-decoration: line-through
+}
+
+.Icon-container-check {
+  left: 12px
+}
+
+.Icon-container-check--active {
+  color: #4caf50
+}
+
+.Icon-container-delete:hover {
+  color: red
+}
+
+.Icon-container-delete:focus {
+  color: red
+}
+
+.Icon-container-check:hover {
+  color: green
+}
