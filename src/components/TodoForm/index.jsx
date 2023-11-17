@@ -1,20 +1,21 @@
-import './styles.css';
-import { useState, useContext } from 'react';
-import { TodoContext } from '../TodoContext';
-import { ErrorTodo } from '../ErrorTodo';
+import "./styles.css";
+import { useState, useContext } from "react";
+import { TodoContext } from "../TodoContext";
+import { ErrorTodo } from "../ErrorTodo";
 
 function TodoForm() {
-  const { setOpenModal, addTodo, setCreateErrorTodo, createErrorTodo } = useContext(TodoContext);
+  const { setOpenModal, addTodo, setCreateErrorTodo, createErrorTodo } =
+    useContext(TodoContext);
   const [newTodoValue, setNewTodoValue] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-  }
+  };
 
   const onChange = (e) => {
     setNewTodoValue(e.target.value);
     setCreateErrorTodo(false);
-  }
+  };
 
   const onCreateTodo = () => {
     if (newTodoValue.length === 0) {
@@ -23,16 +24,16 @@ function TodoForm() {
       addTodo(newTodoValue);
       setOpenModal(false);
     }
-  }
+  };
 
   const onCancel = () => {
     setOpenModal(false);
     setCreateErrorTodo(false);
-  }
+  };
 
   return (
-    <div className='TodoFormContainer' onSubmit={onSubmit}>
-      <h4 className='TodoFormTitle'>Crea un nuevo TODO</h4>
+    <div className="TodoFormContainer" onSubmit={onSubmit}>
+      <h4 className="TodoFormTitle">Crea una nueva tarea</h4>
       <form className="TodoForm">
         <input
           type="text"
@@ -41,15 +42,10 @@ function TodoForm() {
           value={newTodoValue}
           onChange={onChange}
         />
-        <button
-          className="btn createTaskButton"
-          onClick={onCreateTodo}
-        >
+        <button className="btn createTaskButton" onClick={onCreateTodo}>
           Crear
         </button>
-        <button
-          className="btn cancelTaskButton"
-          onClick={onCancel}>
+        <button className="btn cancelTaskButton" onClick={onCancel}>
           Cancelar
         </button>
       </form>
