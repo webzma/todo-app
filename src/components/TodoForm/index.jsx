@@ -38,7 +38,7 @@ function TodoForm() {
         <input
           type="text"
           className="createTaskInput"
-          placeholder="Escribe un nuevo TODO"
+          placeholder="Escribe una nueva tarea..."
           value={newTodoValue}
           onChange={onChange}
         />
