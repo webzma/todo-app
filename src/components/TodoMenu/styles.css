@@ -8,6 +8,7 @@
   border-bottom: 1px solid lightgray;
 }
 
+
 .todoNav-list {
   display: flex;
   align-items: center;
@@ -41,4 +42,14 @@
 .active {
   font-weight: bold;
   color: #000;
+}
+
+@media (max-width: 470px) {
+  .todoNav {
+    justify-content: center;
+  }
+
+  .todoNameSpan {
+    display: none;
+  }
 }

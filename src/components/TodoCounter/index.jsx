@@ -9,14 +9,14 @@ function TodoCounter() {
     return (
       <h1 className="TodoCounter">
         Has completado <span>{completedTodos}</span> de{" "}
-        <span>{totalTodos}</span> Tarea.
+        <span>{totalTodos}</span> tarea.
       </h1>
     );
   } else {
     return (
       <h1 className="TodoCounter">
         Has completado <span>{completedTodos}</span> de{" "}
-        <span>{totalTodos}</span> Tareas.
+        <span>{totalTodos}</span> tareas.
       </h1>
     );
   }

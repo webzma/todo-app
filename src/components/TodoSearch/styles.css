@@ -14,7 +14,7 @@
   width: 90%;
   max-width: 400px;
   padding: 15px;
-  font-family: 'Roboto Mono', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: #EFEFEF;
   font-weight: 400;
   color: #1E1E1F;
@@ -26,7 +26,7 @@
 .TodoSearch::placeholder {
   font-size: 14px;
   letter-spacing: 1px;
-  font-family: 'Roboto Mono', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .TodoSearch:focus {
