@@ -14,29 +14,33 @@
   width: calc(100% - 120px);
   font-size: 18px;
   line-height: 24px;
-  font-weight: 400
+  font-weight: 400;
 }
 
 .TodoItem-p--complete {
-  text-decoration: line-through
+  text-decoration: line-through;
 }
 
 .Icon-container-check {
-  left: 12px
+  left: 12px;
 }
 
 .Icon-container-check--active {
-  color: #4caf50
+  color: #4caf50;
 }
 
 .Icon-container-delete:hover {
-  color: red
+  color: red;
 }
 
 .Icon-container-delete:focus {
-  color: red
+  color: red;
 }
 
 .Icon-container-check:hover {
-  color: green
+  color: green;
+}
+
+.Icon-container-edit:hover {
+  color: gray;
 }

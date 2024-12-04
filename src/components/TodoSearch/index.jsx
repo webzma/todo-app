@@ -2,12 +2,18 @@ import "./styles.css";
 import { useContext } from "react";
 import { CreateTodoButton } from "../CreateTodoButton";
 import { TodoContext } from "../TodoContext";
+import { useNavigate } from "react-router-dom";
 
 function TodoSearch() {
+  const navigate = useNavigate();
   const { searchValue, setSearchValue } = useContext(TodoContext);
 
   function handleSearch(e) {
     setSearchValue(e.target.value);
+  }
+
+  function onClickCreateTodo() {
+    navigate("/new");
   }
 
   return (
@@ -19,7 +25,7 @@ function TodoSearch() {
         onChange={handleSearch}
         value={searchValue}
       />
-      <CreateTodoButton />
+      <CreateTodoButton onClick={onClickCreateTodo} />
     </div>
   );
 }

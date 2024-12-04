@@ -2,6 +2,10 @@
   padding: 30px 30px 50px;
   border-radius: 2px;
   background-color: #f9fbfc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .TodoForm {
@@ -64,7 +68,7 @@
   touch-action: manipulation;
   text-transform: uppercase;
   cursor: pointer;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 .cancelTaskButton {

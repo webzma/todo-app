@@ -1,15 +1,8 @@
 import "./styles.css";
-import { useContext } from "react";
-import { TodoContext } from "../TodoContext";
 
-function CreateTodoButton() {
-  const { setOpenModal } = useContext(TodoContext);
-
+function CreateTodoButton({ onClick }) {
   return (
-    <button
-      className="CreateTodoButton"
-      onClick={() => setOpenModal((openModal) => !openModal)}
-    >
+    <button className="CreateTodoButton" onClick={onClick}>
       Crear tarea
     </button>
   );

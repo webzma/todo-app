@@ -24,13 +24,13 @@ function useLocalStorage(itemName, initialValue) {
       } catch (err) {
         setLoading(false);
         setError(true);
+        console.error(err);
       }
     }, 1000);
   }, []);
 
-  //ESTA FUNCIÓN SE ENCARGA DE PERSISTIR Y GUARDAR LAS TAREAS EN EL ESTADO Y LOCALSTORAGE
   function saveItem(newItem) {
-    localStorage.setItem('TODOS_V1', JSON.stringify(newItem));
+    localStorage.setItem("TODOS_V1", JSON.stringify(newItem));
     setItem(newItem);
   }
 

@@ -1,15 +1,23 @@
 import "./styles.css";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { TodoContext } from "../TodoContext";
 import { ErrorTodo } from "../ErrorTodo";
+import { useNavigate } from "react-router-dom";
 
-function TodoForm() {
-  const { setOpenModal, addTodo, setCreateErrorTodo, createErrorTodo } =
-    useContext(TodoContext);
-  const [newTodoValue, setNewTodoValue] = useState("");
+function TodoForm({
+  title,
+  action,
+  setNewTodoValue,
+  newTodoValue,
+  placeholder,
+  actionButtonName,
+}) {
+  const navigate = useNavigate();
+  const { setCreateErrorTodo, createErrorTodo } = useContext(TodoContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
+    action();
   };
 
   const onChange = (e) => {
@@ -17,33 +25,24 @@ function TodoForm() {
     setCreateErrorTodo(false);
   };
 
-  const onCreateTodo = () => {
-    if (newTodoValue.length === 0) {
-      setCreateErrorTodo(true);
-    } else {
-      addTodo(newTodoValue);
-      setOpenModal(false);
-    }
-  };
-
   const onCancel = () => {
-    setOpenModal(false);
     setCreateErrorTodo(false);
+    navigate("/");
   };
 
   return (
-    <div className="TodoFormContainer" onSubmit={onSubmit}>
-      <h4 className="TodoFormTitle">Crea una nueva tarea</h4>
-      <form className="TodoForm">
+    <div className="TodoFormContainer">
+      <h4 className="TodoFormTitle">{title}</h4>
+      <form className="TodoForm" onSubmit={onSubmit}>
         <input
           type="text"
           className="createTaskInput"
-          placeholder="Escribe una nueva tarea..."
+          placeholder={placeholder}
           value={newTodoValue}
           onChange={onChange}
         />
-        <button className="btn createTaskButton" onClick={onCreateTodo}>
-          Crear
+        <button className="btn createTaskButton" type="submit">
+          {actionButtonName}
         </button>
         <button className="btn cancelTaskButton" onClick={onCancel}>
           Cancelar

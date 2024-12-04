@@ -3,7 +3,6 @@ import { useLocalStorage } from "../App/useLocalStorage";
 const TodoContext = React.createContext();
 
 function TodoProvider({ children }) {
-  //ESTADO DE LAS TAREAS
   const {
     item: todos,
     saveItem: saveTodo,
@@ -11,47 +10,43 @@ function TodoProvider({ children }) {
     loading,
   } = useLocalStorage("TODOS_V1", []);
 
-  // estado del filtro de tareas
   const [filter, setFilter] = React.useState("all");
-
-  //ESTADO DE LAS BUSQUEDAS DE LAS TAREAS
   const [searchValue, setSearchValue] = React.useState("");
-
-  //ESTADO DEL MODAL PARA CREAR TAREAS
-  const [openModal, setOpenModal] = React.useState(false);
-
   const [createErrorTodo, setCreateErrorTodo] = React.useState(false);
 
-  //ESTA FUNCIÓN PERMITE MARCAR COMO COMPLETADO UNA TAREA
-  function completeTodo(text) {
+  function completeTodo(id) {
     const newTodos = [...todos];
-    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+    const todoIndex = newTodos.findIndex((todo) => todo.id === id);
     const isCompletedTodo = newTodos[todoIndex].completed;
     newTodos[todoIndex].completed = !isCompletedTodo;
     saveTodo(newTodos);
   }
 
-  //ESTA FUNCIÓN NOS PERMITE ELIMINAR UNA TAREA
-  function deleteTodo(text) {
+  function deleteTodo(id) {
     const newTodos = [...todos];
-    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+    const todoIndex = newTodos.findIndex((todo) => todo.id === id);
     newTodos.splice(todoIndex, 1);
     saveTodo(newTodos);
   }
 
-  //ESTA FUNCIÓN NOS PERMITE CREAR UN TODO
   function addTodo(text) {
     const newTodos = [...todos];
     newTodos.push({
       text,
       completed: false,
+      id: crypto.randomUUID(),
     });
     saveTodo(newTodos);
   }
 
-  // controlar el filtro de tareas
+  function editTodo(id, newText) {
+    const todoIndex = todos.findIndex((todo) => todo.id === id);
+    const newTodos = [...todos];
+    newTodos[todoIndex].text = newText;
+    saveTodo(newTodos);
+  }
+
   const handleFilterTask = (newFilter) => {
-    console.log(newFilter);
     setFilter(newFilter);
   };
 
@@ -64,17 +59,18 @@ function TodoProvider({ children }) {
     return true; // Si el filtro es 'all', mostrar todas las tareas
   });
 
-  //ESTA FUNCIÓN PERMITE ESCUCHAR EL EVENTO ONCHANGE PARA LAS TAREAS QUE TENGAN QUE SER BUSCADAS
   const searchedTodos = filteredTasks.filter((todo) => {
     const todoText = todo.text.toLowerCase();
     const searchText = searchValue.toLowerCase();
     return todoText.includes(searchText);
   });
 
-  //AQUÍ GUARDAMOS LA LONGITUD DE NUESTRAS TAREAS
-  const totalTodos = todos.length;
+  function getDefaultTodoText(id) {
+    const todoIndex = todos.findIndex((todo) => todo.id === id);
+    return todos[todoIndex];
+  }
 
-  //AQUÍ GUARDAMOS LA CANTIDAD DE TAREAS COMPLETADAS
+  const totalTodos = todos.length;
   const completedTodos = todos.filter((todo) => todo.completed === true).length;
 
   return (
@@ -84,14 +80,13 @@ function TodoProvider({ children }) {
         loading,
         todos,
         completedTodos,
+        editTodo,
         totalTodos,
         searchedTodos,
         deleteTodo,
         completeTodo,
         searchValue,
         setSearchValue,
-        openModal,
-        setOpenModal,
         saveTodo,
         addTodo,
         setCreateErrorTodo,
@@ -100,6 +95,7 @@ function TodoProvider({ children }) {
         filteredTasks,
         filter,
         setFilter,
+        getDefaultTodoText,
       }}
     >
       {children}
